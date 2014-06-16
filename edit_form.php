@@ -30,9 +30,11 @@ require_once($CFG->libdir.'/formslib.php');
 class enrol_auto_edit_form extends moodleform {
 
     function definition() {
-        global $DB;
-
         $mform = $this->_form;
+
+        // Clear the observer cache to ensure observers for any newly-installed plugins will be added
+        $cache = \cache::make('core', 'observers');
+        $cache->delete('all');
 
         list($instance, $plugin, $context) = $this->_customdata;
 
@@ -50,10 +52,10 @@ class enrol_auto_edit_form extends moodleform {
                          ENROL_AUTO_MOD_VIEWED    => get_string('modview', 'enrol_auto'));
         $mform->addElement('select', 'customint3', get_string('enrolon', 'enrol_auto'), $options);
         $mform->addHelpButton('customint3', 'enrolon', 'enrol_auto');
-        $mods = $DB->get_records('modules', array('visible' => 1), 'name', 'name');
+        $mods = \enrol_auto\helper::get_mods_with_viewed_event();
         $modgroup = array();
-        foreach ($mods as $mod) {
-            $modgroup[] = $mform->createElement('checkbox', $mod->name, '', get_string('pluginname', "mod_{$mod->name}"));
+        foreach ($mods as $modname) {
+            $modgroup[] = $mform->createElement('checkbox', $modname, '', get_string('pluginname', "mod_{$modname}"));
         }
         $mform->addGroup($modgroup, 'customtext2', get_string('modviewmods', 'enrol_auto'), '<br>', true);
         $mform->disabledIf('customtext2', 'customint3', 'eq', ENROL_AUTO_COURSE_VIEWED);
