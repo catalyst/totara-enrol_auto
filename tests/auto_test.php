@@ -36,14 +36,4 @@ class enrol_auto_testcase extends advanced_testcase { //todo
         $this->assertInstanceOf('enrol_auto_plugin', $plugin);
         $this->assertEquals(1, get_config('enrol_auto', 'defaultenrol'));
     }
-
-    public function test_sync_nothing() {
-        global $SITE;
-
-        $autoplugin = enrol_get_plugin('auto');
-
-        // Just make sure the sync does not throw any errors when nothing to do.
-        $autoplugin->sync(NULL, false);
-        $autoplugin->sync($SITE->id, false);
-    }
 }
