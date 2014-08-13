@@ -29,7 +29,6 @@ $capabilities = array(
 
     /* Add or edit enrol-auto instance in course. */
     'enrol/auto:config' => array(
-
         'captype' => 'write',
         'contextlevel' => CONTEXT_COURSE,
         'archetypes' => array(
@@ -40,7 +39,6 @@ $capabilities = array(
 
     /* Manage user auto-enrolments. */
     'enrol/auto:manage' => array(
-
         'captype' => 'write',
         'contextlevel' => CONTEXT_COURSE,
         'archetypes' => array(

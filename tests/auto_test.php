@@ -26,14 +26,22 @@ defined('MOODLE_INTERNAL') || die();
 
 global $CFG;
 require_once($CFG->dirroot.'/enrol/auto/lib.php');
-require_once($CFG->dirroot.'/enrol/auto/locallib.php');
 
-class enrol_auto_testcase extends advanced_testcase { //todo
+class enrol_auto_testcase extends advanced_testcase {
 
     public function test_basics() {
-        $this->assertTrue(enrol_is_enabled('auto'));
+        # disabled by default
+        $this->assertFalse(enrol_is_enabled('auto'));
+
+        # correct enrol instance
         $plugin = enrol_get_plugin('auto');
         $this->assertInstanceOf('enrol_auto_plugin', $plugin);
-        $this->assertEquals(1, get_config('enrol_auto', 'defaultenrol'));
+
+        # default config checks
+        $this->assertEquals('1', get_config('enrol_auto', 'defaultenrol'));
+        $this->assertEquals('1', get_config('enrol_auto', 'status'));
+        $this->assertEquals(ENROL_AUTO_COURSE_VIEWED, get_config('enrol_auto', 'enrolon'));
+        $this->assertEquals('1', get_config('enrol_auto', 'sendcoursewelcomemessage'));
+        $this->assertEquals('', get_config('enrol_auto', 'modviewmods'));
     }
 }

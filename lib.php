@@ -49,7 +49,7 @@ class enrol_auto_plugin extends enrol_plugin {
     }
 
     public function allow_unenrol(stdClass $instance) {
-        // Users with unenrol cap may unenrol other users manually manually.
+        // Users with unenrol cap may unenrol other users manually.
         return true;
     }
 

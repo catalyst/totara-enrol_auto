@@ -27,7 +27,7 @@ defined('MOODLE_INTERNAL') || die();
 
 $observers = array();
 
-// Get all modules that are using the course_module_viewed event
+// Get all modules that are using the course_module_viewed event and add observers
 $supportedmods = \enrol_auto\helper::get_mods_with_viewed_event();
 foreach ($supportedmods as $modname) {
     $observers[] = array(

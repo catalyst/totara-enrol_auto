@@ -45,8 +45,8 @@ if ($ADMIN->fulltree) {
         get_string('enrolon', 'enrol_auto'), get_string('enrolon_desc', 'enrol_auto'), ENROL_AUTO_COURSE_VIEWED, $options));
 
 
-    // Clear the observer cache to ensure observers for any newly-installed plugins will be added
-    if (strstr($PAGE->url, 'section=enrolsettingsauto')) {
+    // Clear the observer cache to ensure observers for any newly-installed plugins are added
+    if (!empty($PAGE->url) && strstr($PAGE->url, 'section=enrolsettingsauto')) {
         $cache = \cache::make('core', 'observers');
         $cache->delete('all');
     }
