@@ -47,14 +47,15 @@ class observer {
             return;
         }
 
-        if (is_siteadmin()) {
+        if (is_siteadmin($eventdata['userid'])) {
             // Don't enrol site admins
             return;
         }
 
         $autoplugin = enrol_get_plugin('auto');
 
-        if (!$instance = $autoplugin->get_instance_for_course($eventdata['courseid'])) {
+        if (!$instance = $autoplugin->get_instance_for_course($eventdata['courseid'])
+                || $instance->status == ENROL_INSTANCE_DISABLED) {
             return;
         }
 
@@ -70,6 +71,47 @@ class observer {
         }
 
         if (!$DB->record_exists('user_enrolments', array('enrolid' => $instance->id, 'userid' => $eventdata['userid']))) {
+            $autoplugin->enrol_user($instance, $eventdata['userid'], $instance->roleid);
+        }
+    }
+
+    /**
+     * Triggered via the user_loggedin event, when a user logs in.
+     *
+     * @param stdClass $event
+     */
+    public static function user_loggedin($event) {
+        global $DB;
+
+        $eventdata = $event->get_data();
+
+        if (!enrol_is_enabled('auto')) {
+            return;
+        }
+
+        if (is_siteadmin($eventdata['userid'])) {
+            // Don't enrol site admins
+            return;
+        }
+
+        // Get all courses that have an auto enrol plugin, set to auto enrol on login, where the user isn't enrolled yet
+        $sql = "SELECT e.courseid
+            FROM {enrol} e
+            LEFT JOIN {user_enrolments} ue ON e.id = ue.enrolid AND ue.userid = ?
+            WHERE e.enrol = 'auto'
+            AND e.status = ?
+            AND e.customint3 = ?
+            AND ue.id IS NULL";
+        if (!$courses = $DB->get_records_sql($sql, array($eventdata['userid'], ENROL_INSTANCE_ENABLED, ENROL_AUTO_LOGIN))) {
+            return;
+        }
+
+        $autoplugin = enrol_get_plugin('auto');
+        foreach ($courses as $course) {
+            if (!$instance = $autoplugin->get_instance_for_course($course->courseid)) {
+                continue;
+            }
+
             $autoplugin->enrol_user($instance, $eventdata['userid'], $instance->roleid);
         }
     }

@@ -24,6 +24,7 @@
 
 define('ENROL_AUTO_COURSE_VIEWED', 1);
 define('ENROL_AUTO_MOD_VIEWED', 2);
+define('ENROL_AUTO_LOGIN', 3);
 
 class enrol_auto_plugin extends enrol_plugin {
 

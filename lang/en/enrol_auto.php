@@ -37,6 +37,8 @@ $string['enrolon_help'] = 'Choose the event that should trigger auto enrolment.
 
 **Course view** - Enrol a user upon course view.<br>
 
+**User login** - Enrol users as soon as they log in.<br>
+
 **Course activity/resource view** - Enrol a user when one of the selected activities/resources is viewed.<br>
 *NOTE:* this option requires a Guest access enrol instance. ';
 $string['enrolon_desc'] = 'Event which will trigger an auto enrolment.';
@@ -61,6 +63,7 @@ $string['status_help'] = 'This setting determines whether this auto enrol plugin
 $string['unenrol'] = 'Unenrol user';
 $string['unenroluser'] = 'Do you really want to unenrol "{$a->user}" from course "{$a->course}"?';
 $string['unenrolselfconfirm'] = 'Do you really want to unenrol yourself from course "{$a}"?';
+$string['userlogin'] = 'User login';
 $string['welcometocourse'] = 'Welcome to {$a}';
 $string['welcometocoursetext'] = 'Welcome to {$a->coursename}!
 

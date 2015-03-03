@@ -51,6 +51,7 @@ class enrol_auto_edit_form extends moodleform {
         $mform->addHelpButton('status', 'status', 'enrol_auto');
 
         $options = array(ENROL_AUTO_COURSE_VIEWED => get_string('courseview', 'enrol_auto'),
+                         ENROL_AUTO_LOGIN => get_string('userlogin', 'enrol_auto'),
                          ENROL_AUTO_MOD_VIEWED    => get_string('modview', 'enrol_auto'));
         $mform->addElement('select', 'customint3', get_string('enrolon', 'enrol_auto'), $options);
         $mform->addHelpButton('customint3', 'enrolon', 'enrol_auto');
@@ -60,7 +61,7 @@ class enrol_auto_edit_form extends moodleform {
             $modgroup[] = $mform->createElement('checkbox', $mod->name, '', get_string('pluginname', "mod_{$mod->name}"));
         }
         $mform->addGroup($modgroup, 'customtext2', get_string('modviewmods', 'enrol_auto'), '<br>', true);
-        $mform->disabledIf('customtext2', 'customint3', 'eq', ENROL_AUTO_COURSE_VIEWED);
+        $mform->disabledIf('customtext2', 'customint3', 'neq', ENROL_AUTO_MOD_VIEWED);
 
         $roles = $this->extend_assignable_roles($context, $instance->roleid);
         $mform->addElement('select', 'roleid', get_string('role', 'enrol_auto'), $roles);

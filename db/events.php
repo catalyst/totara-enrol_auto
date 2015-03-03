@@ -35,3 +35,8 @@ foreach ($supportedmods as $modname) {
         'callback'    => '\enrol_auto\observer::course_module_viewed'
     );
 }
+
+$observers[] = array(
+    'eventname'   => '\core\event\user_loggedin',
+    'callback'    => '\enrol_auto\observer::user_loggedin'
+);

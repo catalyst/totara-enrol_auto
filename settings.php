@@ -40,6 +40,7 @@ if ($ADMIN->fulltree) {
         get_string('status', 'enrol_auto'), get_string('status_desc', 'enrol_auto'), ENROL_INSTANCE_DISABLED, $options));
 
     $options = array(ENROL_AUTO_COURSE_VIEWED => get_string('courseview', 'enrol_auto'),
+                     ENROL_AUTO_LOGIN => get_string('userlogin', 'enrol_auto'),
                      ENROL_AUTO_MOD_VIEWED    => get_string('modview', 'enrol_auto'));
     $settings->add(new admin_setting_configselect('enrol_auto/enrolon',
         get_string('enrolon', 'enrol_auto'), get_string('enrolon_desc', 'enrol_auto'), ENROL_AUTO_COURSE_VIEWED, $options));
