@@ -54,7 +54,7 @@ class observer {
 
         $autoplugin = enrol_get_plugin('auto');
 
-        if (!$instance = $autoplugin->get_instance_for_course($eventdata['courseid'])
+        if ((!$instance = $autoplugin->get_instance_for_course($eventdata['courseid']))
                 || $instance->status == ENROL_INSTANCE_DISABLED) {
             return;
         }
