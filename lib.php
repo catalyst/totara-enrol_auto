@@ -210,7 +210,7 @@ class enrol_auto_plugin extends enrol_plugin {
      * @param stdClass $user user record
      * @return void
      */
-    protected function email_welcome_message($instance, $user) {
+    public function email_welcome_message($instance, $user) {
         global $CFG, $DB;
 
         $course = $DB->get_record('course', array('id'=>$instance->courseid), '*', MUST_EXIST);
