@@ -55,10 +55,11 @@ class enrol_auto_edit_form extends moodleform {
                          ENROL_AUTO_MOD_VIEWED    => get_string('modview', 'enrol_auto'));
         $mform->addElement('select', 'customint3', get_string('enrolon', 'enrol_auto'), $options);
         $mform->addHelpButton('customint3', 'enrolon', 'enrol_auto');
-        $mods = $DB->get_records('modules', array('visible' => 1), 'name', 'name');
+
+        $mods = \enrol_auto\helper::get_mods_with_viewed_event();
         $modgroup = array();
-        foreach ($mods as $mod) {
-            $modgroup[] = $mform->createElement('checkbox', $mod->name, '', get_string('pluginname', "mod_{$mod->name}"));
+        foreach ($mods as $modname) {
+            $modgroup[] = $mform->createElement('checkbox', $modname, '', get_string('pluginname', "mod_{$modname}"));
         }
         $mform->addGroup($modgroup, 'customtext2', get_string('modviewmods', 'enrol_auto'), '<br>', true);
         $mform->disabledIf('customtext2', 'customint3', 'neq', ENROL_AUTO_MOD_VIEWED);
