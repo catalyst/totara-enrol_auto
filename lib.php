@@ -180,6 +180,8 @@ class enrol_auto_plugin extends enrol_plugin {
      * Attempt to automatically enrol current user in course without any interaction,
      * calling code has to make sure the plugin and instance are active.
      *
+     * This hook is called from the course view page.
+     *
      * This should return either a timestamp in the future or false.
      *
      * @param stdClass $instance course enrol instance
