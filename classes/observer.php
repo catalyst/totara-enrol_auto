@@ -72,6 +72,12 @@ class observer {
 
         if (!$DB->record_exists('user_enrolments', array('enrolid' => $instance->id, 'userid' => $eventdata['userid']))) {
             $autoplugin->enrol_user($instance, $eventdata['userid'], $instance->roleid);
+
+            // Send welcome message.
+            if ($instance->customint2) {
+                $autoplugin = enrol_get_plugin('auto');
+                $autoplugin->email_welcome_message($instance, $DB->get_record('user', array('id' => $eventdata['userid'])));
+            }
         }
     }
 
@@ -113,6 +119,13 @@ class observer {
             }
 
             $autoplugin->enrol_user($instance, $eventdata['userid'], $instance->roleid);
+
+            // Send welcome message.
+            if ($instance->customint2) {
+                $autoplugin = enrol_get_plugin('auto');
+                $autoplugin->email_welcome_message($instance, $DB->get_record('user', array('id' => $eventdata['userid'])));
+            }
+
         }
     }
 }
