@@ -213,14 +213,14 @@ class enrol_auto_plugin extends enrol_plugin {
      * @return void
      */
     public function email_welcome_message($instance, $user) {
-        global $CFG, $DB;
+        global $CFG, $DB, $PAGE;
 
         $course = $DB->get_record('course', array('id'=>$instance->courseid), '*', MUST_EXIST);
         $context = context_course::instance($course->id);
 
         $a = new stdClass();
         $a->coursename = format_string($course->fullname, true, array('context'=>$context));
-        $a->profileurl = "$CFG->wwwroot/user/view.php?id=$user->id&course=$course->id";
+        $a->profileurl = "{$CFG->wwwroot}/user/view.php?id={$user->id}&course={$course->id}";
         $strmgr = get_string_manager();
 
         if (trim($instance->customtext1) !== '') {
@@ -262,8 +262,17 @@ class enrol_auto_plugin extends enrol_plugin {
             $contact = core_user::get_support_user();
         }
 
-        // Directly emailing welcome message rather than using messaging.
+        if (empty($PAGE->context)) {
+            // Context is needed by email_to_user.
+            $PAGE->set_context($context);
+            $resetpage = true;
+        }
+        // Send welcome email.
         email_to_user($user, $contact, $subject, $messagetext, $messagehtml);
+        if (!empty($resetpage)) {
+            // Don't interfere with page setup - this will happen later.
+            $PAGE->reset_theme_and_output();
+        }
     }
 
     /**
