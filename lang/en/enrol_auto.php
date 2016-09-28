@@ -43,7 +43,7 @@ $string['enrolon_help'] = 'Choose the event that should trigger auto enrolment.
 *NOTE:* this option requires a Guest access enrol instance. ';
 $string['enrolon_desc'] = 'Event which will trigger an auto enrolment.';
 $string['courseview'] = 'Course view';
-$string['modview'] = 'Course acitivity/resource view';
+$string['modview'] = 'Course activity/resource view';
 $string['modviewmods'] = 'Activities/resources';
 $string['modviewmods_desc'] = 'Viewing any of the selected resources/activities will trigger an auto enrolment.';
 $string['pluginname'] = 'Auto enrolment';
