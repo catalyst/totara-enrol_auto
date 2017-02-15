@@ -73,10 +73,8 @@ class observer {
         if (!$DB->record_exists('user_enrolments', array('enrolid' => $instance->id, 'userid' => $eventdata['userid']))) {
             $autoplugin->enrol_user($instance, $eventdata['userid'], $instance->roleid);
 
-            // Send welcome message.
             if ($instance->customint2) {
-                $autoplugin = enrol_get_plugin('auto');
-                $autoplugin->email_welcome_message($instance, $DB->get_record('user', array('id' => $eventdata['userid'])));
+                self::schedule_welcome_email($instance, $eventdata['userid']);
             }
         }
     }
@@ -120,12 +118,30 @@ class observer {
 
             $autoplugin->enrol_user($instance, $eventdata['userid'], $instance->roleid);
 
-            // Send welcome message.
             if ($instance->customint2) {
-                $autoplugin = enrol_get_plugin('auto');
-                $autoplugin->email_welcome_message($instance, $DB->get_record('user', array('id' => $eventdata['userid'])));
+                self::schedule_welcome_email($instance, $eventdata['userid']);
             }
 
         }
+    }
+
+    static function schedule_welcome_email($instance, $userid) {
+        global $DB;
+
+        $user = $DB->get_record('user', array('id' => $userid));
+        if (empty($user)) {
+            // wat?
+            return false;
+        }
+
+        // Schedule welcome message task.
+        $emailtask = new \enrol_auto\task\course_welcome_email();
+        // add custom data
+        $emailtask->set_custom_data(array(
+            'user' => $user,
+            'instance' => $instance
+        ));
+        // queue it
+        \core\task\manager::queue_adhoc_task($emailtask);
     }
 }
