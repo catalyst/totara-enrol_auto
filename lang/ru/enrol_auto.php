@@ -23,51 +23,51 @@
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['customwelcomemessage'] = 'Custom welcome message';
-$string['customwelcomemessage_help'] = 'A custom welcome message may be added as plain text or Moodle-auto format, including HTML tags and multi-lang tags.
+$string['customwelcomemessage'] = 'Альтернативное приветсвенное сообщение';
+$string['customwelcomemessage_help'] = 'Альтернативное приветственное сообщение добавляется в формате текста либо HTML, можно использовать теги HTML и теги для поддержки многоязыковых сообщений.
 
-The following placeholders may be included in the message:
+Следующие фразы могут быть включены в сообщение:
 
-* Course name {$a->coursename}
-* Link to user\'s profile page {$a->profileurl}';
-$string['defaultrole'] = 'Default role assignment';
-$string['defaultrole_desc'] = 'Select role which should be assigned to users during auto enrolment.';
-$string['editenrolment'] = 'Edit enrolment';
-$string['enrolon'] = 'Enrol on';
-$string['enrolon_help'] = 'Choose the event that should trigger auto enrolment.
+* Имя курсы {$a->coursename}
+* Ссылка на профиль прользователя {$a->profileurl}';
+$string['defaultrole'] = 'Роль назначаемая по умолчанию';
+$string['defaultrole_desc'] = 'Выберите роль, которая будет назначена по умолчанию для пользователей использующих данный метод зачисления.';
+$string['editenrolment'] = 'Редактировать зачисление';
+$string['enrolon'] = 'Разрешить зачисление';
+$string['enrolon_help'] = 'Выберите события для автоматического зачисления на курс.
 
-**Course view** - Enrol a user upon course view.<br>
+**Просмотр курса** - Зачислять всех, кто запрашивает просмотр кусра.<br>
 
-**User login** - Enrol users as soon as they log in.<br>
+**Зачислять при входе в систему** - Зачислять всех авторизующихся пользователей.<br>
 
-**Course activity/resource view** - Enrol a user when one of the selected activities/resources is viewed.<br>
-*NOTE:* this option requires a Guest access enrol instance. ';
-$string['enrolon_desc'] = 'Event which will trigger an auto enrolment.';
-$string['courseview'] = 'Course view';
-$string['modview'] = 'Course activity/resource view';
-$string['modviewmods'] = 'Activities/resources';
-$string['modviewmods_desc'] = 'Viewing any of the selected resources/activities will trigger an auto enrolment.';
-$string['pluginname'] = 'Auto enrolment';
-$string['pluginname_desc'] = 'The auto enrolment plugin automatically enrols users upon course/activity/resource view.';
-$string['requirepassword'] = 'Require enrolment key';
-$string['requirepassword_desc'] = 'Require enrolment key in new courses and prevent removing of enrolment key from existing courses.';
-$string['role'] = 'Default assigned role';
-$string['auto:config'] = 'Configure auto enrol instances';
-$string['auto:manage'] = 'Manage enrolled users';
-$string['auto:unenrol'] = 'Unenrol users from course';
-$string['auto:unenrolself'] = 'Unenrol self from the course';
-$string['sendcoursewelcomemessage'] = 'Send course welcome message';
-$string['sendcoursewelcomemessage_help'] = 'If enabled, users receive a welcome message via email when they get auto enrolled.';
-$string['status'] = 'Allow auto enrolments';
-$string['status_desc'] = 'Allow auto enrolments of users into course by default.';
-$string['status_help'] = 'This setting determines whether this auto enrol plugin is enabled for this course.';
-$string['unenrol'] = 'Unenrol user';
-$string['unenroluser'] = 'Do you really want to unenrol "{$a->user}" from course "{$a->course}"?';
-$string['unenrolselfconfirm'] = 'Do you really want to unenrol yourself from course "{$a}"?';
-$string['userlogin'] = 'User login';
-$string['welcometocourse'] = 'Welcome to {$a}';
-$string['welcometocoursetext'] = 'Welcome to {$a->coursename}!
+**Просмотр элемента курса/ресурса** - Зачислять всех кто запросит просмотр соответвующего элемента курса / ресурса.<br>
+*Примечание:* этот параметр требует начилия гостевого доступа к курсу. ';
+$string['enrolon_desc'] = 'Событие используемое для автоматического зачисления.';
+$string['courseview'] = 'Просмотр курса';
+$string['modview'] = 'Просмотр элемента курса/ресурса';
+$string['modviewmods'] = 'Элемент курса/ресурс';
+$string['modviewmods_desc'] = 'Просмотр любого из выбранных элементов курса/ресурса приведет к автоматического записи на него.';
+$string['pluginname'] = 'Автозачисление';
+$string['pluginname_desc'] = 'Плагин автоматического зачисления зачисляет на курс пользователей по заданным условиям.';
+$string['requirepassword'] = 'Требовать пароль';
+$string['requirepassword_desc'] = 'Требовать наличия ключа регистрации на новых курсах и предотвращения удаления ключа регистрации из существующих курсов.';
+$string['role'] = 'Роль, назначаемая по умолчанию';
+$string['auto:config'] = 'Конфигурировать автозачисление';
+$string['auto:manage'] = 'Управлять зачисленными пользователями';
+$string['auto:unenrol'] = 'Отчислять пользователей из курса';
+$string['auto:unenrolself'] = 'Отчисляться самостоятельно из курса';
+$string['sendcoursewelcomemessage'] = 'Отправить приветственное сообщение';
+$string['sendcoursewelcomemessage_help'] = 'Если включено, пользователю будет отправлено приветсвенное сообщение на адрес электронной почты в процессе автоматического зачисления.';
+$string['status'] = 'Разрешить автоматическую регистрацию';
+$string['status_desc'] = 'Разрешить автоматическую регистрацию пользователей в курс по умолчанию.';
+$string['status_help'] = 'Этот параметр определяет, включен ли этот плагин автоматической регистрации для этого курса.';
+$string['unenrol'] = 'Отменить подписку пользователя';
+$string['unenroluser'] = 'Вы действительно хотите отчислить пользователя из курса "{$a->course}"?';
+$string['unenrolselfconfirm'] = 'Вы действительно хотите отчислится из курса? "{$a}"?';
+$string['userlogin'] = 'При входе в систему';
+$string['welcometocourse'] = 'Добро пожаловать в {$a}';
+$string['welcometocoursetext'] = 'Добро пожаловать в {$a->coursename}!
 
-If you have not done so already, you should edit your profile page so that we can learn more about you:
+Если вы еще этого не сделали, вам необходимо отредактировать страницу своего профиля, чтобы мы могли больше узнать о вас:
 
 {$a->profileurl}';
