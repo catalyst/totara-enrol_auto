@@ -1,0 +1,10 @@
+{
+    "name": "eugeneventer/moodle-enrol_auto",
+    "type": "moodle-enrol",
+    "require": {
+        "composer/installers": "~1.0"
+    },
+    "extra": {
+        "installer-name": "auto"
+    }
+}
