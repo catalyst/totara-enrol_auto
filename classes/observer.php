@@ -27,6 +27,7 @@ namespace enrol_auto;
 defined('MOODLE_INTERNAL') || die();
 
 require_once($CFG->dirroot . '/enrol/locallib.php');
+require_once($CFG->dirroot . '/enrol/auto/lib.php');
 
 /**
  * Event observer for enrol_auto.

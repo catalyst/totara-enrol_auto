@@ -1,5 +1,5 @@
 {
-    "name": "eugeneventer/moodle-enrol_auto",
+    "name": "bynare/moodle-enrol_auto",
     "type": "moodle-enrol",
     "require": {
         "composer/installers": "~1.0"
