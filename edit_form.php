@@ -29,7 +29,7 @@ require_once($CFG->libdir.'/formslib.php');
 
 class enrol_auto_edit_form extends moodleform {
 
-    function definition() {
+    protected function definition() {
         global $DB;
 
         $mform = $this->_form;
@@ -70,7 +70,7 @@ class enrol_auto_edit_form extends moodleform {
         $mform->addElement('advcheckbox', 'customint2', get_string('sendcoursewelcomemessage', 'enrol_auto'));
         $mform->addHelpButton('customint2', 'sendcoursewelcomemessage', 'enrol_auto');
 
-        $mform->addElement('textarea', 'customtext1', get_string('customwelcomemessage', 'enrol_auto'), array('cols'=>'60', 'rows'=>'8'));
+        $mform->addElement('textarea', 'customtext1', get_string('customwelcomemessage', 'enrol_auto'), array('cols' => '60', 'rows' => '8'));
         $mform->addHelpButton('customtext1', 'customwelcomemessage', 'enrol_auto');
         $mform->disabledIf('customtext1', 'customint2', 'notchecked');
 
@@ -82,23 +82,28 @@ class enrol_auto_edit_form extends moodleform {
         $this->add_action_buttons(true, ($instance->id ? null : get_string('addinstance', 'enrol')));
 
         $instance->customtext2 = array_flip(explode(',', $instance->customtext2));
-        $instance->customtext2 = array_map(function ($a) { return 1; }, $instance->customtext2);
+        $instance->customtext2 = array_map(
+            function ($a) {
+                return 1;
+            },
+            $instance->customtext2
+        );
         $this->set_data($instance);
     }
 
     /**
-    * Gets a list of roles that this user can assign for the course as the default for auto-enrolment.
-    *
-    * @param context $context the context.
-    * @param integer $defaultrole the id of the role that is set as the default for auto-enrolment
-    * @return array index is the role id, value is the role name
-    */
-    function extend_assignable_roles($context, $defaultrole) {
+     * Gets a list of roles that this user can assign for the course as the default for auto-enrolment.
+     *
+     * @param context $context the context.
+     * @param integer $defaultrole the id of the role that is set as the default for auto-enrolment
+     * @return array index is the role id, value is the role name
+     */
+    protected function extend_assignable_roles($context, $defaultrole) {
         global $DB;
 
         $roles = get_assignable_roles($context, ROLENAME_BOTH);
         if (!isset($roles[$defaultrole])) {
-            if ($role = $DB->get_record('role', array('id'=>$defaultrole))) {
+            if ($role = $DB->get_record('role', array('id' => $defaultrole))) {
                 $roles[$defaultrole] = role_get_name($role, $context, ROLENAME_BOTH);
             }
         }

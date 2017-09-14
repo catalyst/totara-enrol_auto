@@ -30,14 +30,14 @@ require_once($CFG->dirroot.'/enrol/auto/lib.php');
 class enrol_auto_testcase extends advanced_testcase {
 
     public function test_basics() {
-        # disabled by default
+        // disabled by default
         $this->assertFalse(enrol_is_enabled('auto'));
 
-        # correct enrol instance
+        // correct enrol instance
         $plugin = enrol_get_plugin('auto');
         $this->assertInstanceOf('enrol_auto_plugin', $plugin);
 
-        # default config checks
+        // default config checks
         $this->assertEquals('1', get_config('enrol_auto', 'defaultenrol'));
         $this->assertEquals('1', get_config('enrol_auto', 'status'));
         $this->assertEquals(ENROL_AUTO_COURSE_VIEWED, get_config('enrol_auto', 'enrolon'));

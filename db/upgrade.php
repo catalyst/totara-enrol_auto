@@ -29,6 +29,5 @@ function xmldb_enrol_auto_upgrade($oldversion) {
 
     $dbman = $DB->get_manager();
 
-
     return true;
 }

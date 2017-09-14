@@ -126,7 +126,7 @@ class observer {
         }
     }
 
-    static function schedule_welcome_email($instance, $userid) {
+    public static function schedule_welcome_email($instance, $userid) {
         global $DB;
 
         $user = $DB->get_record('user', array('id' => $userid));

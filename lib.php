@@ -115,11 +115,11 @@ class enrol_auto_plugin extends enrol_plugin {
         $context = context_course::instance($courseid, MUST_EXIST);
 
         if (!has_capability('moodle/course:enrolconfig', $context) || !has_capability('enrol/auto:config', $context)) {
-            return NULL;
+            return null;
         }
 
         if ($DB->record_exists('enrol', array('courseid' => $courseid, 'enrol' => 'auto'))) {
-            return NULL;
+            return null;
         }
 
         return new moodle_url('/enrol/auto/edit.php', array('courseid' => $courseid));
@@ -215,7 +215,7 @@ class enrol_auto_plugin extends enrol_plugin {
     public function email_welcome_message($instance, $user) {
         global $CFG, $DB, $PAGE;
 
-        $course = $DB->get_record('course', array('id'=>$instance->courseid), '*', MUST_EXIST);
+        $course = $DB->get_record('course', array('id' => $instance->courseid), '*', MUST_EXIST);
 
         $a = new stdClass();
         $a->coursename = format_string($course->fullname, true);
@@ -232,7 +232,7 @@ class enrol_auto_plugin extends enrol_plugin {
                 $messagehtml = text_to_html($messagetext, null, false, true);
             } else {
                 // This is most probably the tag/newline soup known as FORMAT_MOODLE.
-                $messagehtml = format_text($message, FORMAT_MOODLE, array('para'=>false, 'newlines'=>true, 'filter'=>true));
+                $messagehtml = format_text($message, FORMAT_MOODLE, array('para' => false, 'newlines' => true, 'filter' => true));
                 $messagetext = html_to_text($messagehtml);
             }
         } else {
@@ -241,7 +241,7 @@ class enrol_auto_plugin extends enrol_plugin {
         }
 
         $subject = $strmgr->get_string('welcometocourse', 'enrol_auto', format_string($course->fullname, true), $user->lang);
-        $subject =  str_replace('&amp;', '&', $subject);
+        $subject = str_replace('&amp;', '&', $subject);
 
         $rusers = array();
         if (!empty($CFG->coursecontact)) {
@@ -283,7 +283,7 @@ class enrol_auto_plugin extends enrol_plugin {
             return $this->lasternoller;
         }
 
-        $instance = $DB->get_record('enrol', array('id'=>$instanceid, 'enrol'=>$this->get_name()), '*', MUST_EXIST);
+        $instance = $DB->get_record('enrol', array('id' => $instanceid, 'enrol' => $this->get_name()), '*', MUST_EXIST);
         $context = context_course::instance($instance->courseid);
 
         if ($users = get_enrolled_users($context, 'enrol/auto:manage')) {
