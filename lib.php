@@ -388,5 +388,19 @@ class enrol_auto_plugin extends enrol_plugin {
         $context = context_course::instance($instance->courseid);
         return has_capability('enrol/auto:config', $context);
     }
+    
+     /**
+     * Is it possible to delete enrol instance via standard UI?
+     *
+     * @param stdClass $instance
+     * @return bool
+     * 
+     * Added by A.Pawelczak 2018, adam.pawelczak@neokrates.pl
+     * 
+     */    
+    public function can_delete_instance($instance) {
+        $context = context_course::instance($instance->courseid);
+        return has_capability('enrol/auto:config', $context);    
+    }
 
 }
