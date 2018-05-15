@@ -48,6 +48,7 @@ $string['modviewmods'] = 'Activities/resources';
 $string['modviewmods_desc'] = 'Viewing any of the selected resources/activities will trigger an auto enrolment.';
 $string['pluginname'] = 'Auto enrolment';
 $string['pluginname_desc'] = 'The auto enrolment plugin automatically enrols users upon course/activity/resource view.';
+$string['privacy:metadata'] = 'The auto enrolment plugin does not store any personal data.';
 $string['requirepassword'] = 'Require enrolment key';
 $string['requirepassword_desc'] = 'Require enrolment key in new courses and prevent removing of enrolment key from existing courses.';
 $string['role'] = 'Default assigned role';
