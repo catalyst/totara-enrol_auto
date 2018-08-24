@@ -194,6 +194,11 @@ class enrol_auto_plugin extends enrol_plugin {
             return false;
         }
 
+        // Prevent guest user from being enrolled
+        if (isguestuser()) {
+            return false;
+        }
+
         $this->enrol_user($instance, $USER->id, $instance->roleid);
         // Send welcome message.
         if ($instance->customint2) {
