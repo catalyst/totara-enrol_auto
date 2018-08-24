@@ -28,8 +28,10 @@ Feature: Auto enrol setup and use
       | Enrol on             | Course view |
     And I log out
     And I am on "Course 1" course homepage
+    # trying to access the course should redirect you to the login page
     When I press "Log in as a guest"
-    Then I should see "Log in"
+    Then I should not see "Topic 1"
+    And I should see "Guests cannot access this course."
 
   Scenario: Auto enrolment upon course view
     Given I log in as "teacher1"
