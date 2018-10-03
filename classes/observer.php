@@ -48,8 +48,8 @@ class observer {
             return;
         }
 
-        if (is_siteadmin($eventdata['userid'])) {
-            // Don't enrol site admins
+        if (is_siteadmin($eventdata['userid']) || isguestuser($eventdata['userid'])) {
+            // Don't enrol site admins or guest users.
             return;
         }
 
@@ -94,8 +94,8 @@ class observer {
             return;
         }
 
-        if (is_siteadmin($eventdata['userid'])) {
-            // Don't enrol site admins
+        if (is_siteadmin($eventdata['userid']) || isguestuser($eventdata['userid'])) {
+            // Don't enrol site admins or guest users.
             return;
         }
 
