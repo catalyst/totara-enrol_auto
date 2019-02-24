@@ -16,7 +16,7 @@ Feature: Auto enrol setup and use
       | user     | course | role           |
       | teacher1 | c1     | editingteacher |
     And I log in as "admin"
-    And I navigate to "Manage enrol plugins" node in "Site administration > Plugins > Enrolments"
+    And I navigate to "Plugins > Enrolments > Manage enrol plugins" in site administration
     And I click on "Enable" "link" in the "Auto enrolment" "table_row"
     And I log out
 
@@ -55,7 +55,7 @@ Feature: Auto enrol setup and use
     And I log out
     And I log in as "teacher1"
     And I am on "Course 1" course homepage
-    And I navigate to "Enrolled users" node in "Course administration > Users"
+    And I navigate to "Users > Enrolled users" in current page administration
     Then I should see "eugene@venter.com"
     And I should see "Eugene auto enrolment"
     And I log out
@@ -96,6 +96,6 @@ Feature: Auto enrol setup and use
 
     When I log in as "teacher1"
     And I am on "Course 1" course homepage
-    And I navigate to "Enrolled users" node in "Course administration > Users"
+    And I navigate to "Users > Enrolled users" in current page administration
     Then I should see "eugene@venter.com"
     And I should see "Eugene auto enrolment"
