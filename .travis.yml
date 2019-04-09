@@ -1,10 +1,10 @@
 language: php
 
-sudo: false
+sudo: true
 
 addons:
   firefox: "47.0.1"
-  postgresql: "9.3"
+  postgresql: "9.4"
 
 cache:
   directories:
@@ -12,7 +12,6 @@ cache:
     - $HOME/.npm
 
 php:
- - 7.0
  - 7.1
 
 env:
@@ -27,7 +26,7 @@ before_install:
   - nvm install 8.9
   - nvm use 8.9
   - cd ../..
-  - composer create-project -n --no-dev --prefer-dist moodlerooms/moodle-plugin-ci ci ^2
+  - composer create-project -n --no-dev --prefer-dist blackboard-open-source/moodle-plugin-ci ci ^2
   - export PATH="$(cd ci/bin; pwd):$(cd ci/vendor/bin; pwd):$PATH"
 
 install:
