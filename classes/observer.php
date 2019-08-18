@@ -72,6 +72,11 @@ class observer {
         }
 
         if (!$DB->record_exists('user_enrolments', array('enrolid' => $instance->id, 'userid' => $eventdata['userid']))) {
+            $context = \context_course::instance($instance->courseid);
+            // Check if this user can self-enrol.
+            if (!has_capability('enrol/auto:enrolself', $context)) {
+                return;
+            }
             $autoplugin->enrol_user($instance, $eventdata['userid'], $instance->roleid);
 
             if ($instance->customint2) {
@@ -116,7 +121,11 @@ class observer {
             if (!$instance = $autoplugin->get_instance_for_course($course->courseid)) {
                 continue;
             }
-
+            $context = \context_course::instance($instance->courseid);
+            // Check if this user can self-enrol.
+            if (!has_capability('enrol/auto:enrolself', $context)) {
+                continue;
+            }
             $autoplugin->enrol_user($instance, $eventdata['userid'], $instance->roleid);
 
             if ($instance->customint2) {
