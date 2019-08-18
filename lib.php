@@ -198,6 +198,11 @@ class enrol_auto_plugin extends enrol_plugin {
         if (isguestuser()) {
             return false;
         }
+        $context = context_course::instance($instance->courseid);
+        // Check if this user can self-enrol.
+        if (!has_capability('enrol/auto:enrolself', $context)) {
+            return false;
+        }
 
         $this->enrol_user($instance, $USER->id, $instance->roleid);
         // Send welcome message.

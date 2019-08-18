@@ -47,6 +47,15 @@ $capabilities = array(
         )
     ),
 
+    /* Allow the user to enrol themselves. */
+    'enrol/auto:enrolself' => array(
+        'captype' => 'write',
+        'contextlevel' => CONTEXT_COURSECAT,
+        'archetypes' => array(
+            'user' => CAP_ALLOW,
+        )
+    ),
+
     /* Voluntarily unenrol auto from course - watch out for data loss. */
     'enrol/auto:unenrolself' => array(
         'captype' => 'write',

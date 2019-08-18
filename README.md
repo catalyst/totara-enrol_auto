@@ -14,3 +14,8 @@ Auto enrolment can be configured for the following scenarios:
 * Auto enrolment upon activity/activities view
 
 The plugin also allows you to configure a welcome message to be sent to the user upon enrolment.
+
+You can now control self-enrolment using capabilities, so that you can allow auto enrolment
+for a specific group of users within a course category. By default the 'enrol/auto:enrolself' capability
+is given to all users, however you can remove this from the authenticated user role, and just give it to
+certain roles assigned at the course category level.
