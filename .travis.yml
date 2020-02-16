@@ -4,7 +4,10 @@ sudo: true
 
 addons:
   firefox: "47.0.1"
-  postgresql: "9.4"
+  postgresql: "9.5"
+
+services:
+  - mysql
 
 cache:
   directories:
@@ -12,7 +15,7 @@ cache:
     - $HOME/.npm
 
 php:
- - 7.1
+ - 7.2
 
 env:
  global:
