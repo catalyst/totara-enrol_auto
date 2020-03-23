@@ -26,8 +26,11 @@ namespace enrol_auto;
 
 defined('MOODLE_INTERNAL') || die();
 
+use context_course;
+
 require_once($CFG->dirroot . '/enrol/locallib.php');
 require_once($CFG->dirroot . '/enrol/auto/lib.php');
+require_once($CFG->dirroot . '/lib/enrollib.php');
 
 /**
  * Event observer for enrol_auto.
@@ -117,10 +120,13 @@ class observer {
                 continue;
             }
 
-            $autoplugin->enrol_user($instance, $eventdata['userid'], $instance->roleid);
+            if (!is_enrolled(context_course::instance($course->courseid))) {
 
-            if ($instance->customint2) {
-                self::schedule_welcome_email($instance, $eventdata['userid']);
+                $autoplugin->enrol_user($instance, $eventdata['userid'], $instance->roleid);
+
+                if ($instance->customint2) {
+                    self::schedule_welcome_email($instance, $eventdata['userid']);
+                }
             }
 
         }
