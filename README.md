@@ -19,3 +19,11 @@ You can now control self-enrolment using capabilities, so that you can allow aut
 for a specific group of users within a course category. By default the 'enrol/auto:enrolself' capability
 is given to all users, however you can remove this from the authenticated user role, and just give it to
 certain roles assigned at the course category level.
+
+Supported Branches
+--------
+
+| Moodle verion     | Branch      | PHP  |
+| ----------------- | ----------- | ---- |
+| Moodle 3.2 and higher| master | 5.6+ |
+| Totara 12+ | master |  7.1+ |
