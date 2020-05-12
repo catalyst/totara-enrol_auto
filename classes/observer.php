@@ -48,7 +48,10 @@ class observer {
             return;
         }
 
-        if (is_siteadmin($eventdata['userid']) || isguestuser($eventdata['userid'])) {
+        $context = \context_course::instance($eventdata['courseid']);
+        $enrolStatus = is_enrolled($context, $eventdata['userid'], $withcapability = 'moodle/course:request', $onlyactive = false);
+
+        if (is_siteadmin($eventdata['userid']) || isguestuser($eventdata['userid']) || $enrolStatus) {
             // Don't enrol site admins or guest users.
             return;
         }
@@ -99,7 +102,10 @@ class observer {
             return;
         }
 
-        if (is_siteadmin($eventdata['userid']) || isguestuser($eventdata['userid'])) {
+        $context = \context_course::instance($eventdata['courseid']);
+        $enrolStatus = is_enrolled($context, $eventdata['userid'], $withcapability = 'moodle/course:request', $onlyactive = false);
+
+        if (is_siteadmin($eventdata['userid']) || isguestuser($eventdata['userid']) || $enrolStatus) {
             // Don't enrol site admins or guest users.
             return;
         }
