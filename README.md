@@ -1,7 +1,7 @@
 Auto enrolment plugin for Moodle (http://moodle.org/)
 =====================================================
 
-[![Build Status](https://travis-ci.org/catalyst/moodle-enrol_auto.svg?branch=master)](https://travis-ci.org/catalyst/moodle-enrol_auto)
+[![Build Status](https://travis-ci.org/catalyst/moodle-enrol_auto.svg?branch=main)](https://travis-ci.org/catalyst/moodle-enrol_auto)
 
 Ever wanted to simplify the enrolment process for some of your courses by just auto enrolling users, based on actions they take within the system? This plugin helps you out with this, as you're able to configure which user actions should trigger a course enrolment for a user :)
 
@@ -25,5 +25,5 @@ Supported Branches
 
 | Moodle verion     | Branch      | PHP  |
 | ----------------- | ----------- | ---- |
-| Moodle 3.2 and higher| master | 5.6+ |
-| Totara 12+ | master |  7.1+ |
+| Moodle 3.2 and higher| main | 5.6+ |
+| Totara 12+ | main |  7.1+ |
