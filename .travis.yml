@@ -1,14 +1,12 @@
 language: php
 
-sudo: true
-
 addons:
-  firefox: "47.0.1"
   postgresql: "9.6"
 
 services:
   - mysql
   - postgresql
+  - docker
 
 cache:
   directories:
@@ -16,7 +14,7 @@ cache:
     - $HOME/.npm
 
 php:
- - 7.2
+  - 7.2
 
 matrix:
   include:
@@ -90,13 +88,13 @@ matrix:
       env: DB=mysqli MOODLE_BRANCH=master
 
 before_install:
+  - phpenv config-rm xdebug.ini
   - cd ../..
-  - composer selfupdate
-  - composer create-project -n --no-dev --prefer-dist moodlehq/moodle-plugin-ci ci ^2
+  - composer create-project -n --no-dev --prefer-dist moodlehq/moodle-plugin-ci ci ^3
   - export PATH="$(cd ci/bin; pwd):$(cd ci/vendor/bin; pwd):$PATH"
 
 install:
-  - moodle-plugin-ci install -vvv
+  - moodle-plugin-ci install
 
 script:
   - moodle-plugin-ci phplint
