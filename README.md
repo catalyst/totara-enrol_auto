@@ -26,4 +26,5 @@ Supported Branches
 | Moodle verion     | Branch      | PHP  |
 | ----------------- | ----------- | ---- |
 | Moodle 3.2 and higher| main | 5.6+ |
-| Totara 12+ | main |  7.1+ |
+| Totara 12 | main |  7.1+ |
+| Totara 13+ | TOTARA_13 | 7.2+ |
