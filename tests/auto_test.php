@@ -27,7 +27,7 @@ defined('MOODLE_INTERNAL') || die();
 global $CFG;
 require_once($CFG->dirroot.'/enrol/auto/lib.php');
 
-class enrol_auto_testcase extends advanced_testcase {
+class enrol_auto_testcase extends \core_phpunit\testcase {
 
     public function test_basics() {
         // disabled by default
