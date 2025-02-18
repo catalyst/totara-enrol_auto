@@ -27,3 +27,4 @@ Supported Branches
 | Totara verion     | Branch      |
 | ----------------- | ----------- |
 | Totara 13 and higher | TOTARA_13 |
+| Totara 19 and higher | TOTARA_19 |
